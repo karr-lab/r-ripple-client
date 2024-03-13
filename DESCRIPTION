@@ -1,0 +1,16 @@
+Package: rippler
+Type: Package
+Title: Interact with Ripple Science API from R
+Version: 0.1.0
+Author: Logan Piepmeier
+Maintainer: Logan Piepmeier <loganap@uw.edu>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    assertthat,
+    glue,
+    httr2,
+    readxl
