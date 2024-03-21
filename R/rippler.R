@@ -77,8 +77,11 @@ ripple_upload <- function(
 	}
   req <- httr2::request(url) |>
     httr2::req_url_path('/v1/import/') |>
-    httr2::req_auth_basic(Sys.getenv('RIPPLER_RIPPLE_USER', unset = getPass::getPass('Ripple Username', forcemask = FALSE)), Sys.getenv('RIPPLER_RIPPLE_PASS', unset = getPass::getPass('Ripple Password'))) |>
-    httr2::req_method('POST') |>
+  	httr2::req_auth_basic(
+  		ifelse(Sys.getenv('RIPPLER_RIPPLE_USER') == '', getPass::getPass('Ripple Username', forcemask = FALSE), Sys.getenv('RIPPLER_RIPPLE_USER')),
+  		ifelse(Sys.getenv('RIPPLER_RIPPLE_PASS') == '', getPass::getPass('Ripple Password'), Sys.getenv('RIPPLER_RIPPLE_PASS'))
+  	) |>
+  	httr2::req_method('POST') |>
     httr2::req_url_query(
       importtype = study_id,
       updateoption = update
