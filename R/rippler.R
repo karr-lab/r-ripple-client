@@ -62,8 +62,8 @@ ripple_download <- function(
 ripple_upload <- function(
 		url = Sys.getenv('RIPPLER_RIPPLE_URL'),
 		study_id = Sys.getenv('RIPPLER_RIPPLE_STUDY_ID'),
-    dat = NULL,
-    file = NULL,
+		dat = NULL,
+		file = NULL,
     update = c('all', 'nocontact', 'noexisting') # default all
   ){
 	assertthat::assert_that(xor(is.null(dat), is.null(file)), msg = 'One (and not both) of `dat`, `file` must be provided.')
