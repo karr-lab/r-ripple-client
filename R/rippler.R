@@ -31,7 +31,8 @@ ripple_download <- function(
         .sep = '&'
       ),
       'application/x-www-form-urlencoded'
-    )
+    ) |> 
+  	httr2::req_timeout(as.integer(Sys.getenv('RIPPLER_TIMEOUT', unset = 60)))
 
   resp <- httr2::req_perform(req)
 
