@@ -68,7 +68,7 @@ ripple_upload <- function(
     update = c('all', 'nocontact', 'noexisting') # default all
   ){
 	assertthat::assert_that(xor(is.null(dat), is.null(file)), msg = 'One (and not both) of `dat`, `file` must be provided.')
-  assertthat::assert_that(!is.null(dat) || assertthat::has_extension(file, '.xlsx'), msg = '`file` should be an xlsx file.')
+  assertthat::assert_that(!is.null(dat) || assertthat::has_extension(file, 'xlsx'), msg = '`file` should be an xlsx file.')
 	update <- rlang::arg_match(update)
 
 	if(is.null(file)){ # format and write temp file if given data frame
