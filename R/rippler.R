@@ -32,7 +32,8 @@ ripple_download <- function(
       ),
       'application/x-www-form-urlencoded'
     ) |> 
-  	httr2::req_timeout(as.integer(Sys.getenv('RIPPLER_TIMEOUT', unset = 60)))
+  	httr2::req_timeout(as.integer(Sys.getenv('RIPPLER_TIMEOUT', unset = 60))) |> 
+    httr2::req_headers(`accept-encoding` = "identity") # Don't allow compression to work around Ripple bug
 
   resp <- httr2::req_perform(req)
 
